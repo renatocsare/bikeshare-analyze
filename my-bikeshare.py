@@ -1,6 +1,5 @@
 # coding: utf-8
 
-# Começando com os imports
 import csv
 import matplotlib.pyplot as plt
 
