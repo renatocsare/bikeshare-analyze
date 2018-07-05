@@ -14,6 +14,7 @@ Renato César
 """)
 
 print("Carregando os dados. Por favor, aguarde...")
+#C:\ferramentas-desenvolvimento\Workspace-python\chicago.csv
 with open("chicago.csv", "r") as file_read:
     reader = csv.reader(file_read)
     data_list = list(reader)
