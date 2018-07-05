@@ -80,11 +80,12 @@ assert male == 935854 and female == 298784, "TAREFA 4: A conta não bate."
 input("\n\nAperte ENTER para continuar...")
 
 # TAREFA 5
-# TODO: Crie uma função para contar os gêneros. Retorne uma lista.
+# Crie uma função para contar os gêneros. Retorne uma lista.
 # Isso deveria retornar uma lista com [count_male, count_female] (exemplo: [10, 15] significa 10 Masculinos, 15 Femininos)
 def count_gender(data_list):
-    male = data_list.count('Male')
-    female = data_list.count('Female')
+    genders = column_to_list(data_list, -2)
+    male = genders.count("Male")
+    female = genders.count("Female")
     return [male, female]
 
 
@@ -97,12 +98,81 @@ assert len(count_gender(data_list)) == 2, "TAREFA 5: Tamanho incorreto retornado
 assert count_gender(data_list)[0] == 935854 and count_gender(data_list)[1] == 298784, "TAREFA 5: Resultado incorreto no retorno!"
 # -----------------------------------------------------
 
+input("\n\nAperte ENTER para continuar...")
 
-#TODO Tarefa 6: Mostre o gênero mais popular
+# TAREFA 6
+# Crie uma função que pegue o gênero mais popular, e retorne este gênero como uma string.
+# Esperamos ver "Masculino", "Feminino", ou "Igual" como resposta.
+def most_popular_gender(data_list):
+    genders = count_gender(data_list)
+    answer = ""
+    if genders[0] > genders[1]:
+        answer = "Masculino"
+    elif genders[0] < genders[1]:
+        answer = "Feminino"
+    else:
+        answer = "Igual"
+    return answer
 
-#TODO Tarefa 7: Mostre um gráfico usando os dados anteriores
+print("\nTAREFA 6: Qual é o gênero mais popular na lista?")
+print("O gênero mais popular na lista é: ", most_popular_gender(data_list))
 
-#TODO Tarefa 8: Responda o motivo do número de homens e mulheres não bater com a quantidade de amostras
+# ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
+assert type(most_popular_gender(data_list)) is str, "TAREFA 6: Tipo incorreto no retorno. Deveria retornar uma string."
+assert most_popular_gender(data_list) == "Masculino", "TAREFA 6: Resultado de retorno incorreto!"
+# -----------------------------------------------------
+
+# Se tudo está rodando como esperado, verifique este gráfico!
+gender_list = column_to_list(data_list, -2)
+types = ["Masculino", "Feminino"]
+quantity = count_gender(data_list)
+y_pos = list(range(len(types)))
+plt.bar(y_pos, quantity)
+plt.ylabel('Quantidade')
+plt.xlabel('Gênero')
+plt.xticks(y_pos, types)
+plt.title('Quantidade por Gênero')
+plt.show(block=False)
+
+input("\n\nAperte ENTER para continuar...")
+
+# TAREFA 7
+# Crie um gráfico similar para user_types. Tenha certeza que a legenda está correta.
+print("\nTAREFA 7: Verifique o gráfico!")
+def count_user_type(users):
+    subscriber = users.count("Subscriber")
+    customer = users.count("Customer")
+    return [subscriber, customer]
+
+users = column_to_list(data_list, -3)
+
+print("\nImprimindo resultado de count_user_type:")
+print(count_user_type(users))
+
+types_users = ["Assinantes", "Clientes"]
+quantity_users = count_user_type(users)
+y_pos_users = list(range(len(types_users)))
+plt.bar(y_pos_users, quantity_users)
+plt.ylabel('Quantidade')
+plt.xlabel('Tipo de usuário')
+plt.xticks(y_pos_users, types_users)
+plt.title('Quantidade por usuário')
+plt.show(block=True)
+
+
+input("\n\nAperte ENTER para continuar...")
+
+# TAREFA 8
+# TODO: Responda a seguinte questão
+male, female = count_gender(data_list)
+print("\nTAREFA 8: Por que a condição a seguir é Falsa?")
+print("male + female == len(data_list):", male + female == len(data_list))
+answer = "Escreva sua resposta aqui."
+print("resposta:", answer)
+
+# ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
+assert answer != "Escreva sua resposta aqui.", "TAREFA 8: Escreva sua própria resposta!"
+# -----------------------------------------------------
 
 #TODO Tarefa 9: Encontre o valor mínimo, máximo, média e mediana da duração de viagens
 
