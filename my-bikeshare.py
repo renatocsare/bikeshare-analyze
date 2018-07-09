@@ -281,32 +281,24 @@ assert len(user_types) == 582, "TAREFA 10: Comprimento errado de start stations.
 
 # TAREFA 11
 # Volte e tenha certeza que você documenteou suas funções. Explique os parâmetros de entrada, a saída, e o que a função faz. Exemplo:
-# def new_function(param1: int, param2: str) -> list:
-      """
-      Função de exemplo com anotações.
-      Argumentos:
-          param1: O primeiro parâmetro.
-          param2: O segundo parâmetro.
-      Retorna:
-          Uma lista de valores x.
-
-      """
 
 input("\n\nAperte ENTER para continuar...")
 
-# TAREFA 12 - Desafio! (Opcional)
-# TODO: Crie uma função para contar tipos de usuários, sem definir os tipos
+# TAREFA 12
+# Crie uma função para contar tipos de usuários, sem definir os tipos
 # para que nós possamos usar essa função com outra categoria de dados.
-print("Você vai encarar o desafio? (yes ou no)")
-answer = "no"
+answer = input("Você vai encarar o desafio? (s / n) -> ")
 
 def count_items(column_list):
     item_types = []
     count_items = []
+    item_types = set(column_list)
+    for item in item_types:
+        occurrences = column_list.count(item)
+        count_items.append(occurrences)
     return item_types, count_items
 
-
-if answer == "yes":
+if answer == "s":
     # ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
     column_list = column_to_list(data_list, -2)
     types, counts = count_items(column_list)
