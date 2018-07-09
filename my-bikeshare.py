@@ -48,6 +48,14 @@ input("\n\nAperte ENTER para continuar...")
 # TAREFA 3
 # Crie uma função para adicionar as colunas(features) de uma lista em outra lista, na mesma ordem
 def column_to_list(data, index):
+    """
+       Função para retornar uma coluna como lista
+       Argumentos:
+          data: Lista com os dados
+          index: Indíce da coluna
+       Retorno:
+          column_list: Lista com os dados da coluna indexada
+    """
     column_list = []
     for line in data:
         column_list.append(line[index])
@@ -84,11 +92,20 @@ input("\n\nAperte ENTER para continuar...")
 # Crie uma função para contar os gêneros. Retorne uma lista.
 # Isso deveria retornar uma lista com [count_male, count_female] (exemplo: [10, 15] significa 10 Masculinos, 15 Femininos)
 def count_gender(data_list):
+    """
+       Função para calcular o total de cada gênero da lista
+       Argumentos:
+          data_list: Lista de registros de bicicletas compartilhadas
+       Retorno:
+          Retorna uma lista onde o primeiro indíce é quantidade do gênero Masculino
+          e o segundo índice é a quantidade do gênero Feminino
+
+          Exemplo: [count_male, count_female] (exemplo: [10, 15] significa 10 Masculinos, 15 Femininos)
+    """
     genders = column_to_list(data_list, -2)
     male = genders.count("Male")
     female = genders.count("Female")
     return [male, female]
-
 
 print("\nTAREFA 5: Imprimindo o resultado de count_gender")
 print(count_gender(data_list))
@@ -105,6 +122,15 @@ input("\n\nAperte ENTER para continuar...")
 # Crie uma função que pegue o gênero mais popular, e retorne este gênero como uma string.
 # Esperamos ver "Masculino", "Feminino", ou "Igual" como resposta.
 def most_popular_gender(data_list):
+    """
+       Calcula o gênero mais popular de uma lista
+       Através da função count_gender obtém a quantidade de cada gênero
+       Argumento:
+          data_list: Lista de registros de bicicletas compartilhadas
+       Retorno:
+          answer: Retorna uma string com o gênero mais popular (Masculino ou Feminino)
+          Caso a quantidade seja idêntica, retorna (Igual)
+    """
     genders = count_gender(data_list)
     answer = ""
     if genders[0] > genders[1]:
@@ -141,6 +167,15 @@ input("\n\nAperte ENTER para continuar...")
 # Crie um gráfico similar para user_types. Tenha certeza que a legenda está correta.
 print("\nTAREFA 7: Verifique o gráfico!")
 def count_user_type(users):
+    """
+       Função para calcular o total de cada tipo de usuário (Subscriber ou Customer)
+       Argumentos:
+          data_list: Lista de usuários
+       Retorno:
+          Retorna uma lista onde o primeiro indíce é quantidade de usuários tipo (Subscriber)
+          e o segundo índice é a quantidade de usuários tipo (Customer)
+          Exemplo: [subscriber, customer] (exemplo: [10, 15] significa 10 subscriber, 15 customer)
+    """
     subscriber = users.count("Subscriber")
     customer = users.count("Customer")
     return [subscriber, customer]
@@ -191,24 +226,37 @@ min_trip = trip_duration_list[0]
 max_trip = trip_duration_list[len(trip_duration_list) - 1]
 
 def calculate_mean_trip(list_duration):
+    """
+       Função para calcular o tempo médio das viagens
+       Argumento:
+          list_duration: Lista com os dados de trip_duration
+       Retorno:
+          mean_trip: Média de tempo das viagens
+    """
     sum_duration = 0
     for duration in list_duration:
         sum_duration += duration
     mean_trip = round(sum_duration/len(list_duration))
     return mean_trip
 
-def calculate_media_trip(list_duration):
+def calculate_median_trip(list_duration):
+    """
+       Função para calcular o mediana de tempo das viagens
+       Argumento:
+          list_duration: Lista com os dados de trip_duration
+       Retorno:
+          median_trip: Mediana de tempo das viagens
+    """
     size_list = len(list_duration) + 1
     index = round(size_list / 2)
     median_trip = list_duration[index]
     return median_trip
 
 mean_trip = calculate_mean_trip(trip_duration_list)
-median_trip = calculate_media_trip(trip_duration_list)
+median_trip = calculate_median_trip(trip_duration_list)
 
 print("\nTAREFA 9: Imprimindo o mínimo, máximo, média, e mediana")
 print("Min: ", min_trip, "Max: ", max_trip, "Média: ", mean_trip, "Mediana: ", median_trip)
-
 
 # ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
 assert round(min_trip) == 60, "TAREFA 9: min_trip com resultado errado!"
@@ -231,4 +279,39 @@ print(user_types)
 assert len(user_types) == 582, "TAREFA 10: Comprimento errado de start stations."
 # -----------------------------------------------------
 
-#TODO Tarefa 11: Crie uma função que conte a ocorrência de qualquer coluna (opcional)
+# TAREFA 11
+# Volte e tenha certeza que você documenteou suas funções. Explique os parâmetros de entrada, a saída, e o que a função faz. Exemplo:
+# def new_function(param1: int, param2: str) -> list:
+      """
+      Função de exemplo com anotações.
+      Argumentos:
+          param1: O primeiro parâmetro.
+          param2: O segundo parâmetro.
+      Retorna:
+          Uma lista de valores x.
+
+      """
+
+input("\n\nAperte ENTER para continuar...")
+
+# TAREFA 12 - Desafio! (Opcional)
+# TODO: Crie uma função para contar tipos de usuários, sem definir os tipos
+# para que nós possamos usar essa função com outra categoria de dados.
+print("Você vai encarar o desafio? (yes ou no)")
+answer = "no"
+
+def count_items(column_list):
+    item_types = []
+    count_items = []
+    return item_types, count_items
+
+
+if answer == "yes":
+    # ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
+    column_list = column_to_list(data_list, -2)
+    types, counts = count_items(column_list)
+    print("\nTAREFA 11: Imprimindo resultados para count_items()")
+    print("Tipos:", types, "Counts:", counts)
+    assert len(types) == 3, "TAREFA 11: Há 3 tipos de gênero!"
+    assert sum(counts) == 1551505, "TAREFA 11: Resultado de retorno incorreto!"
+    # -----------------------------------------------------
