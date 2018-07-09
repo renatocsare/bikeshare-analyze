@@ -2,11 +2,12 @@
 
 import csv
 import matplotlib.pyplot as plt
+import numpy as np
 
 print("""
-------__o
------_\ <,_
-----(_)/ (_)
+      ------__o
+    -------_\ <,_
+----------(_)/ (_)
 
 BIKESHARE - ANÁLISE DE DADOS
 Udacity - Fundamentos de AI e ML
@@ -167,14 +168,54 @@ input("\n\nAperte ENTER para continuar...")
 male, female = count_gender(data_list)
 print("\nTAREFA 8: Por que a condição a seguir é Falsa?")
 print("male + female == len(data_list):", male + female == len(data_list))
-answer = "Escreva sua resposta aqui."
+answer = "A afirmação é falsa pois existem registros da lista onde o gênero é nulo. Portanto o total de linhas não é igual a quantidade de gêneros cadastrados."
 print("resposta:", answer)
 
 # ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
 assert answer != "Escreva sua resposta aqui.", "TAREFA 8: Escreva sua própria resposta!"
 # -----------------------------------------------------
 
-#TODO Tarefa 9: Encontre o valor mínimo, máximo, média e mediana da duração de viagens
+input("\n\nAperte ENTER para continuar...")
+
+# TAREFA 9
+#Ache a duração de viagem Mínima, Máxima, Média, e Mediana.
+trip_duration_list = column_to_list(data_list, 2)
+trip_duration_list = sorted(list(map(int, trip_duration_list)))
+
+min_trip, max_trip, mean_trip, median_trip  = 0, 0, 0, 0
+
+print("\nImprimindo uma amostra da lista de duração das viagens")
+print(trip_duration_list[:10])
+
+min_trip = trip_duration_list[0]
+max_trip = trip_duration_list[len(trip_duration_list) - 1]
+
+def calculate_mean_trip(list_duration):
+    sum_duration = 0
+    for duration in list_duration:
+        sum_duration += duration
+    mean_trip = round(sum_duration/len(list_duration))
+    return mean_trip
+
+def calculate_media_trip(list_duration):
+    size_list = len(list_duration) + 1
+    index = round(size_list / 2)
+    median_trip = list_duration[index]
+    return median_trip
+
+mean_trip = calculate_mean_trip(trip_duration_list)
+median_trip = calculate_media_trip(trip_duration_list)
+
+print("\nTAREFA 9: Imprimindo o mínimo, máximo, média, e mediana")
+print("Min: ", min_trip, "Max: ", max_trip, "Média: ", mean_trip, "Mediana: ", median_trip)
+
+
+# ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
+assert round(min_trip) == 60, "TAREFA 9: min_trip com resultado errado!"
+assert round(max_trip) == 86338, "TAREFA 9: max_trip com resultado errado!"
+assert round(mean_trip) == 940, "TAREFA 9: mean_trip com resultado errado!"
+assert round(median_trip) == 670, "TAREFA 9: median_trip com resultado errado!"
+# -----------------------------------------------------
 
 #TODO Tarefa 10: Mostre todas as estações da base de dados
 
