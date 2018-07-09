@@ -240,7 +240,7 @@ def calculate_mean_trip(list_duration):
 
 def calculate_median_trip(list_duration):
     """
-       Função para calcular o mediana de tempo das viagens
+       Função para calcular a mediana de tempo das viagens
        Argumento:
           list_duration: Lista com os dados de trip_duration
        Retorno:
@@ -289,6 +289,14 @@ input("\n\nAperte ENTER para continuar...")
 answer = input("Você vai encarar o desafio? (s / n) -> ")
 
 def count_items(column_list):
+    """
+       Função para totalizar os tipos de dados e suas ocorrências em uma lista
+       Argumento:
+          column_list: Lista com os dados
+       Retorno:
+          item_types: Total de itens diferentes na lista
+          count_items: Total de ocorrências encontradas na lista de acordo com item_types
+    """
     item_types = []
     count_items = []
     item_types = set(column_list)
