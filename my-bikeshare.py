@@ -217,6 +217,18 @@ assert round(mean_trip) == 940, "TAREFA 9: mean_trip com resultado errado!"
 assert round(median_trip) == 670, "TAREFA 9: median_trip com resultado errado!"
 # -----------------------------------------------------
 
-#TODO Tarefa 10: Mostre todas as estações da base de dados
+input("\n\nAperte ENTER para continuar...")
+
+# TAREFA 10
+# Verifique quantos tipos de start_stations nós temos, usando set()
+user_types = set(column_to_list(data_list, 3))
+
+print("\nTAREFA 10: Imprimindo as start stations:")
+print(len(user_types))
+print(user_types)
+
+# ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
+assert len(user_types) == 582, "TAREFA 10: Comprimento errado de start stations."
+# -----------------------------------------------------
 
 #TODO Tarefa 11: Crie uma função que conte a ocorrência de qualquer coluna (opcional)
