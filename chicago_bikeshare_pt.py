@@ -75,9 +75,14 @@ input("\n\nAperte ENTER para continuar...")
 # TAREFA 4
 # Conte cada gênero. Você não deveria usar uma função para isso.
 genders = column_to_list(data_list, -2)
-male = genders.count('Male')
-female = genders.count('Female')
-
+male = 0
+female = 0
+for gender in genders:
+   if gender == 'Male':
+      male =+ 1
+   elif gender == 'Female':
+      female =+ 1
+      
 print("\nTAREFA 4: Imprimindo quantos masculinos e femininos nós encontramos")
 print("Masculinos: ", male, "\nFemininos: ", female)
 
