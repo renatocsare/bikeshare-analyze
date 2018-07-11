@@ -14,7 +14,6 @@ Renato César
 """)
 
 print("Carregando os dados. Por favor, aguarde...")
-#C:\ferramentas-desenvolvimento\Workspace-python\chicago.csv
 with open("chicago.csv", "r") as file_read:
     reader = csv.reader(file_read)
     data_list = list(reader)
@@ -75,8 +74,13 @@ input("\n\nAperte ENTER para continuar...")
 # TAREFA 4
 # Conte cada gênero. Você não deveria usar uma função para isso.
 genders = column_to_list(data_list, -2)
-male = genders.count('Male')
-female = genders.count('Female')
+male = 0
+female = 0
+for gender in genders:
+   if gender == "Male":
+      male += 1
+   elif gender == "Female":
+      female += 1
 
 print("\nTAREFA 4: Imprimindo quantos masculinos e femininos nós encontramos")
 print("Masculinos: ", male, "\nFemininos: ", female)
@@ -102,8 +106,13 @@ def count_gender(data_list):
           Exemplo: [count_male, count_female] (exemplo: [10, 15] significa 10 Masculinos, 15 Femininos)
     """
     genders = column_to_list(data_list, -2)
-    male = genders.count("Male")
-    female = genders.count("Female")
+    male = 0
+    female = 0
+    for gender in genders:
+    	if gender == "Male":
+    		male += 1
+    	elif gender == "Female":
+    		female += 1
     return [male, female]
 
 print("\nTAREFA 5: Imprimindo o resultado de count_gender")
@@ -175,8 +184,13 @@ def count_user_type(users):
           e o segundo índice é a quantidade de usuários tipo (Customer)
           Exemplo: [subscriber, customer] (exemplo: [10, 15] significa 10 subscriber, 15 customer)
     """
-    subscriber = users.count("Subscriber")
-    customer = users.count("Customer")
+    subscriber = 0
+    customer = 0
+    for user in users:
+        if user == "Subscriber":
+            subscriber += 1
+        elif user == "Customer":
+            customer += 1
     return [subscriber, customer]
 
 users = column_to_list(data_list, -3)
@@ -301,7 +315,10 @@ def count_items(column_list):
     count_items = []
     item_types = set(column_list)
     for item in item_types:
-        occurrences = column_list.count(item)
+        occurrences = 0
+        for obj in column_list:
+            if obj == item:
+                occurrences += 1
         count_items.append(occurrences)
     return item_types, count_items
 
