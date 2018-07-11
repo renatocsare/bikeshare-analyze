@@ -35,7 +35,7 @@ for data in data_list[:20]:
 input("\n\nAperte ENTER para continuar...")
 
 # TAREFA 2
-# Imprima o `gênero` das primeiras 20 linhas
+# Imprima o gênero das primeiras 20 linhas
 print("\n\nTAREFA 2: Imprimindo o gênero das primeiras 20 amostras")
 for data in data_list[:20]:
     gender = data[6]
